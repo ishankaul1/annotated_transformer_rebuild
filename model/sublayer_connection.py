@@ -24,6 +24,9 @@ class SublayerConnection(nn.Module):
 
     def forward(self, x, sublayer):
         "Apply residual connection to any sublayer with the same size"
+        # NOTE: sublayer not initialized here; architecture controlled by the layer itself.
+        # Makes sense since it really just needs dropoout and size for init. Sublayer itself passed in for fwd pass.
+
         # TODO: Try pulling the LayerNorm to the outside?
         return x + self.dropout(sublayer(self.norm(x)))
     
