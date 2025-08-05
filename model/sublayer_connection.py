@@ -19,6 +19,7 @@ class SublayerConnection(nn.Module):
     def __init__(self, size, dropout):
         super(SublayerConnection, self).__init__()
         self.norm = LayerNorm(size)
+        # Read more on dropout: https://jmlr.org/papers/v15/srivastava14a.html
         self.dropout = nn.Dropout(dropout)
 
 
