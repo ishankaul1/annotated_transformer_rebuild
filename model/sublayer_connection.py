@@ -4,6 +4,7 @@ from model.layer_norm import LayerNorm
 
 class SublayerConnection(nn.Module):
     """
+    EG - the "Residual"
     Residual connection followed by layernorm for a sublayer.
     Actual formula is
         LayerNorm(x + Sublayer(x))
