@@ -1,6 +1,8 @@
 from torch import nn
 from model.clones import clones
 from model.layer_norm import LayerNorm
+
+
 class Decoder(nn.Module):
     "Generic N layer decoder with masking."
 
@@ -10,6 +12,8 @@ class Decoder(nn.Module):
         self.norm = LayerNorm(layer.size)
 
     # Almost the same as encoder except both src & target mask; versus just mask
+    # Also note that 'memory' comes straight from the Encoder layer while 'x' eg queries
+    # come from the previous decoder layer.
     def forward(self, x, memory, src_mask, tgt_mask):
         for layer in self.layers:
             x = layer(x, memory, src_mask, tgt_mask)
